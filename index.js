@@ -20,7 +20,7 @@ class Indicative {
   }
 
   addCommonProperties(properties) {
-    RNIndicative.addCommonProperties(truncateParameters(properties));
+    RNIndicative.addCommonProperties(this.truncateParameters(properties));
   }
 
   addCommonProperty(name, value) {
@@ -54,7 +54,7 @@ class Indicative {
   }
 
   recordWithPropertiesUniqueKey(eventName, uniqueKey, properties) {
-    RNIndicative.recordWithPropertiesUniqueKey(eventName, uniqueKey, truncateParameters(properties));
+    RNIndicative.recordWithPropertiesUniqueKey(eventName, uniqueKey, this.truncateParameters(properties));
   }
 
   truncateParameters(rawParams) {
@@ -62,7 +62,7 @@ class Indicative {
     var maxLength = 244
     for(var key in rawParams) {
       var value = rawParams[key];
-  
+
       if (value == undefined) {
         continue;
       }
@@ -70,7 +70,7 @@ class Indicative {
       if (Array.isArray(value) && value.length == 0) {
         continue;
       }
-  
+
       if (isNaN(value)) {
         var value = JSON.stringify(value);
         value =  value.substring(0,maxLength);
